@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MediCare Hospital | Ihre Gesundheit, Unsere Priorität</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="logo">MediCare Hospital</div>
+            <ul class="nav-links">
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#services">Dienstleistungen</a></li>
+                <li><a href="#doctors">Unsere Ärzte</a></li>
+                <li><a href="#facilities">Einrichtungen</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#" id="loginBtn">Anmelden</a></li>
+                <li><a href="#" id="signupBtn">Registrieren</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal-overlay">
+            <div class="modal">
+                <span class="close-button">&times;</span>
+                <h2>Melden Sie sich in Ihrem Konto an</h2>
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="email">E-Mail-Adresse</label>
+                        <input type="email" id="email" placeholder="Geben Sie Ihre E-Mail ein" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Passwort</label>
+                        <input type="password" id="password" placeholder="Geben Sie Ihr Passwort ein" required>
+                    </div>
+                    <div class="form-group remember">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Erinnere dich an mich</label>
+                    </div>
+                    <div class="form-group forgot">
+                        <a href="#">Passwort vergessen?</a>
+                    </div>
+                    <button type="submit" class="submit-btn">Anmelden</button>
+                    <div class="switch-form">
+                        <p>Noch kein Konto? <a href="#" id="switchToSignup">Registrieren Sie sich</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div id="signupModal" class="modal-overlay">
+            <div class="modal">
+                <span class="close-button">&times;</span>
+                <h2>Konto erstellen</h2>
+                <form class="signup-form">
+                    <div class="form-group">
+                        <label for="fullname">Vollständiger Name</label>
+                        <input type="text" id="fullname" placeholder="Geben Sie Ihren vollständigen Namen ein" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">E-Mail-Adresse</label>
+                        <input type="email" id="signup-email" placeholder="Geben Sie Ihre E-Mail ein" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Passwort</label>
+                        <input type="password" id="signup-password" placeholder="Erstellen Sie ein Passwort" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Passwort bestätigen</label>
+                        <input type="password" id="confirm-password" placeholder="Bestätigen Sie Ihr Passwort" required>
+                    </div>
+                    <div class="form-group terms">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Ich stimme den <a href="#">Allgemeinen Geschäftsbedingungen</a> zu</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Registrieren</button>
+                    <div class="switch-form">
+                        <p>Bereits ein Konto? <a href="#" id="switchToLogin">Anmelden</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section id="home" class="hero">
+            <h1>Willkommen im MediCare Hospital</h1>
+            <p>Außergewöhnliche Gesundheitsversorgung mit Mitgefühl und Fachkompetenz</p>
+            <div class="hero-buttons">
+                <a href="#appointment" class="cta-button primary">Termin vereinbaren</a>
+                <a href="#emergency" class="cta-button secondary">Notfalldienste</a>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <h2>Unsere medizinischen Dienstleistungen</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Kardiologie</h3>
+                    <p>Umfassende Herzversorgung mit fortschrittlichen Diagnose- und Behandlungsoptionen</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Neurologie</h3>
+                    <p>Spezialisierte Versorgung bei neurologischen Erkrankungen und Zuständen</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bone"></i>
+                    <h3>Orthopädie</h3>
+                    <p>Fachkundige Behandlung von Knochen-, Gelenk- und Muskelverletzungen</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Allgemeinmedizin</h3>
+                    <p>Primärversorgung für alle Altersgruppen mit individuellen Behandlungsplänen</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-baby"></i>
+                    <h3>Pädiatrie</h3>
+                    <p>Spezialisierte Versorgung für Säuglinge, Kinder und Jugendliche</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-procedures"></i>
+                    <h3>Chirurgie</h3>
+                    <p>Moderne chirurgische Verfahren mit minimalinvasiven Optionen</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="doctors" class="doctors">
+            <h2>Unsere Fachärzte</h2>
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="john Smith.jpeg" alt="Dr. John Smith">
+                    </div>
+                    <h3>Dr. John Smith</h3>
+                    <p class="specialty">Kardiologie</p>
+                    <p>Über 15 Jahre Erfahrung in der Behandlung komplexer Herzerkrankungen</p>
+                    <div class="doctor-contact">
+                        <a href="#" class="doctor-btn">Profil anzeigen</a>
+                        <a href="#" class="doctor-btn">Termin vereinbaren</a>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="Sarah Johnson.jpeg" alt="Dr. Sarah Johnson">
+                    </div>
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p class="specialty">Neurologie</p>
+                    <p>Spezialistin für neurologische Erkrankungen mit internationaler Anerkennung</p>
+                    <div class="doctor-contact">
+                        <a href="#" class="doctor-btn">Profil anzeigen</a>
+                        <a href="#" class="doctor-btn">Termin vereinbaren</a>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="Michael Chen.jpeg" alt="Dr. Michael Chen">
+                    </div>
+                    <h3>Dr. Michael Chen</h3>
+                    <p class="specialty">Orthopädie</p>
+                    <p>Experte für Sportverletzungen und Gelenkersatzoperationen</p>
+                    <div class="doctor-contact">
+                        <a href="#" class="doctor-btn">Profil anzeigen</a>
+                        <a href="#" class="doctor-btn">Termin vereinbaren</a>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="Emily Rodriguez.jpeg" alt="Dr. Emily Rodriguez">
+                    </div>
+                    <h3>Dr. Emily Rodriguez</h3>
+                    <p class="specialty">Pädiatrie</p>
+                    <p>Engagiert, um einfühlsame Versorgung für Kinder jeden Alters bereitzustellen</p>
+                    <div class="doctor-contact">
+                        <a href="#" class="doctor-btn">Profil anzeigen</a>
+                        <a href="#" class="doctor-btn">Termin vereinbaren</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="facilities" class="facilities">
+            <h2>Unsere Einrichtungen</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <i class="fas fa-ambulance"></i>
+                    <h3>Notfallversorgung rund um die Uhr</h3>
+                    <p>Rund um die Uhr Notfalldienste mit schnellen Einsatzteams</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Fortgeschrittene Diagnostik</h3>
+                    <p>Modernste diagnostische Geräte für präzise Ergebnisse</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-notes-medical"></i>
+                    <h3>Elektronische Gesundheitsakten</h3>
+                    <p>Sichere digitale Aufzeichnungen für eine nahtlose Gesundheitskoordination</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-wheelchair"></i>
+                    <h3>Rehabilitationszentrum</h3>
+                    <p>Umfassende Rehabilitationsdienste für eine optimale Genesung</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="appointment" class="appointment">
+            <h2>Termin vereinbaren</h2>
+            <div class="appointment-container">
+                <form class="appointment-form">
+                    <div class="form-r">
+                        <div class="form-g">
+                            <label for="patient-name" style="color: #004d80; font-weight: 600;">Vollständiger Name</label>
+                            <input type="text" id="patient-name" placeholder="Geben Sie Ihren vollständigen Namen ein" required>
+                        </div>
+                        <div class="form-g">
+                            <label for="patient-email" style="color: #004d80; font-weight: 600;">E-Mail</label>
+                            <input type="email" id="patient-email" placeholder="Geben Sie Ihre E-Mail ein" required>
+                        </div>
+                    </div>
+                    <div class="form-r">
+                        <div class="form-g">
+                            <label for="patient-phone" style="color: #004d80; font-weight: 600;">Telefonnummer</label>
+                            <input type="tel" id="patient-phone" placeholder="Geben Sie Ihre Telefonnummer ein" required>
+                        </div>
+                        <div class="form-g">
+                            <label for="appointment-date" style="color: #004d80; font-weight: 600;">Wunschtermin</label>
+                            <input type="date" id="appointment-date" required>
+                        </div>
+                    </div>
+                    <div class="form-r">
+                        <div class="form-g">
+                            <label for="department" style="color: #004d80; font-weight: 600;">Abteilung</label>
+                            <select id="department" required>
+                                <option value="" disabled selected>Abteilung auswählen</option>
+                                <option value="cardiology">Kardiologie</option>
+                                <option value="neurology">Neurologie</option>
+                                <option value="orthopedics">Orthopädie</option>
+                                <option value="pediatrics">Pädiatrie</option>
+                                <option value="general">Allgemeinmedizin</option>
+                            </select>
+                        </div>
+                        <div class="form-g">
+                            <label for="doctor" style="color: #004d80; font-weight: 600;">Bevorzugter Arzt</label>
+                            <select id="doctor" required>
+                                <option value="" disabled selected>Arzt auswählen</option>
+                                <option value="dr-smith">Dr. John Smith</option>
+                                <option value="dr-johnson">Dr. Sarah Johnson</option>
+                                <option value="dr-chen">Dr. Michael Chen</option>
+                                <option value="dr-rodriguez">Dr. Emily Rodriguez</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-g">
+                        <label for="symptoms" style="color: #004d80; font-weight: 600;">Symptome/Grund für den Besuch</label>
+                        <textarea id="symptoms" placeholder="Bitte beschreiben Sie Ihre Symptome oder den Grund des Besuchs" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Termin vereinbaren</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>Über MediCare Hospital</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>1985 gegründet, ist das MediCare Hospital seit über 40 Jahren Vorreiter in der Bereitstellung umfassender Gesundheitsdienstleistungen für unsere Gemeinschaft. Unsere hochmodernen Einrichtungen in Verbindung mit unserem Team aus hochqualifizierten medizinischen Fachkräften gewährleisten, dass jeder Patient eine auf seine Bedürfnisse zugeschnittene Versorgung von höchster Qualität erhält.</p>
+                    <p>Wir verpflichten uns zu stetiger Verbesserung und Innovation in der Gesundheitsversorgung, indem wir in die neueste Medizintechnik und Behandlungsmethoden investieren, um unseren Patienten bestmöglich zu dienen. Im MediCare Hospital glauben wir daran, nicht nur die Krankheit, sondern die ganze Person mit Mitgefühl, Würde und Respekt zu behandeln.</p>
+                    <p>Unser Krankenhaus ist von der Joint Commission akkreditiert und hat zahlreiche Auszeichnungen für hervorragende Patientenversorgung, Sicherheit und Zufriedenheit erhalten.</p>
+                </div>
+                <div class="about-image">
+                    <img src="MediCare Hospital.jpg" alt="MediCare Hospital Building">
+                </div>
+            </div>
+        </section>
+
+        <section id="emergency" class="emergency">
+            <div class="emergency-content">
+                <div class="emergency-text">
+                    <h2>Notfalldienste</h2>
+                    <p>Unsere rund um die Uhr geöffnete Notaufnahme ist dafür ausgestattet, alle medizinischen Notfälle schnell, effizient und in hoher Qualität zu behandeln.</p>
+                    <div class="emergency-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-info">
+                                <h3>Notfall-Hotline</h3>
+                                <p class="phone">1-800-MEDICARE</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-ambulance"></i>
+                            <div class="contact-info">
+                                <h3>Krankenwagenservice</h3>
+                                <p>Rund um die Uhr mit schnellen Einsatzteams</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Kontakt</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Kontaktieren Sie uns</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Gesundheitsstraße, Medizinisches Viertel</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@medicarehospital.com</p>
+                    
+                    <div class="working-hours">
+                        <h3>Öffnungszeiten</h3>
+                        <p><strong>Notfallversorgung:</strong> 24/7</p>
+                        <p><strong>Ambulante Dienste:</strong> Mo-Fr: 8 Uhr - 20 Uhr</p>
+                        <p><strong>Wochenend-Ambulanz:</strong> Sa: 9 Uhr - 17 Uhr</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="E-Mail" required>
+                    <input type="tel" placeholder="Telefonnummer" required>
+                    <select required>
+                        <option value="" disabled selected>Abteilung auswählen</option>
+                        <option value="general">Allgemeine Anfrage</option>
+                        <option value="appointments">Termine</option>
+                        <option value="billing">Abrechnung &amp; Versicherung</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                    <textarea placeholder="Nachricht" required></textarea>
+                    <button type="submit">Nachricht senden</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="map">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215280694125!2d-73.98664868451422!3d40.748440079327945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTAuMiJX!5e0!3m2!1sen!2sus!4v1618429399558!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MediCare Hospital</h4>
+                    <p>Außergewöhnliche Gesundheitsversorgung mit Mitgefühl und Fachkompetenz seit 1985.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Schnellzugriff</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Startseite</a></li>
+                        <li><a href="#services">Dienstleistungen</a></li>
+                        <li><a href="#doctors">Ärzte</a></li>
+                        <li><a href="#facilities">Einrichtungen</a></li>
+                        <li><a href="#about">Über uns</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Krankenhauszeiten</h4>
+                    <p>Notfallversorgung: 24/7</p>
+                    <p>Ambulant: Mo-Fr 8 Uhr - 20 Uhr</p>
+                    <p>Wochenend-Ambulanz: Sa 9 Uhr - 17 Uhr</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Folgen Sie uns</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MediCare Hospital. Alle Rechte vorbehalten. Entwickelt von Zouraiz.</p>
+            </div>
+        </footer>
+
+<script src="main.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Mobile Navigation
+                const burger = document.querySelector('.burger');
+                const nav = document.querySelector('.nav-links');
+                const navLinks = document.querySelectorAll('.nav-links li');
+
+                burger.addEventListener('click', () => {
+                    // Toggle Nav
+                    nav.classList.toggle('nav-active');
+                    
+                    // Animate Links
+                    navLinks.forEach((link, index) => {
+                        if (link.style.animation) {
+                            link.style.animation = '';
+                        } else {
+                            link.style.animation = `navLinkFade 0.4s ease forwards ${index / 7 + 0.3}s`;
+                        }
+                    });
+                    
+                    // Burger Animation
+                    burger.classList.toggle('toggle');
+                });
+                
+                // Login Modal
+                const loginBtn = document.getElementById('loginBtn');
+                const loginModal = document.getElementById('loginModal');
+                const signupBtn = document.getElementById('signupBtn');
+                const signupModal = document.getElementById('signupModal');
+                const closeButtons = document.querySelectorAll('.close-button');
+                const switchToSignup = document.getElementById('switchToSignup');
+                const switchToLogin = document.getElementById('switchToLogin');
+                
+                loginBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginModal.style.display = 'flex';
+                });
+                
+                signupBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signupModal.style.display = 'flex';
+                });
+                
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        loginModal.style.display = 'none';
+                        signupModal.style.display = 'none';
+                    });
+                });
+                
+                window.addEventListener('click', (e) => {
+                    if (e.target === loginModal) {
+                        loginModal.style.display = 'none';
+                    }
+                    if (e.target === signupModal) {
+                        signupModal.style.display = 'none';
+                    }
+                });
+                
+                switchToSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginModal.style.display = 'none';
+                    signupModal.style.display = 'flex';
+                });
+                
+                switchToLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signupModal.style.display = 'none';
+                    loginModal.style.display = 'flex';
+                });
+                
+                // Smooth Scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        if (this.getAttribute('href') === '#') return;
+                        
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+                
+                // Form Submission
+                const forms = document.querySelectorAll('form');
+                forms.forEach(form => {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        // Show success message
+                        const formType = this.classList.contains('appointment-form') 
+                            ? 'appointment' 
+                            : this.classList.contains('login-form')
+                                ? 'login'
+                                : this.classList.contains('signup-form')
+                                    ? 'signup'
+                                    : 'message';
+                        
+                        let message = '';
+                        switch(formType) {
+                            case 'appointment':
+                                message = 'Ihre Terminvereinbarung wurde erhalten. Wir werden Sie in Kürze kontaktieren, um den Termin zu bestätigen.';
+                                break;
+                            case 'login':
+                                message = 'Sie haben sich erfolgreich angemeldet.';
+                                break;
+                            case 'signup':
+                                message = 'Ihr Konto wurde erfolgreich erstellt.';
+                                break;
+                            default:
+                                message = 'Ihre Nachricht wurde gesendet. Wir werden uns in Kürze bei Ihnen melden.';
+                        }
+                        
+                        showModal('Vielen Dank!', message);
+                        this.reset();
+                    });
+                });
+                
+                // Scroll Animation
+                window.addEventListener('scroll', function() {
+                    const nav = document.querySelector('nav');
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                });
+                
+                // Modal Functionality
+                function showModal(title, message) {
+                    // Create modal elements dynamically
+                    const modal = document.createElement('div');
+                    modal.classList.add('modal-overlay');
+                    modal.style.display = 'flex';
+                    
+                    modal.innerHTML = `
+                        <div class="modal">
+                            <span class="close-button">&times;</span>
+                            <h2>${title}</h2>
+                            <p>${message}</p>
+                            <button class="close-modal">Schließen</button>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    // Close modal on button click
+                    modal.querySelector('.close-modal').addEventListener('click', () => {
+                        modal.remove();
+                    });
+                    
+                    modal.querySelector('.close-button').addEventListener('click', () => {
+                        modal.remove();
+                    });
+                    
+                    // Close modal on clicking outside
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) modal.remove();
+                    });
+                }
+            });
+        </script>
+
+    </body>
+</html>
